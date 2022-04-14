@@ -1,0 +1,261 @@
+<div class="instagram-{{ section.id }} tw-relative tw-container lazyloaded ">
+    <h4 class="instagram_title tw-title-sm type-title-font-family tw-m-0 tw-mb-6 lg:tw-mb-10" style="margin-top:{{section.settings.title_margin}};font-size:{{section.settings.widget_title_fontsize}};color:{{section.settings.color_title}}">{{section.settings.widget_title}}</h4>
+    <div class="tw-overflow-hidden tw-relative">
+      {% if section.settings.arrow %}
+      <div class="tw-absolute tw-w-full tw-h-full" style="margin-top:{{ section.settings.arrow_top }}">
+        <span class="instagram-pagination  tw-absolute tw-cursor-pointer tw-top-1/2 tw-left-2 tw-transform tw--translate-y-1/2 tw-z-10 tw-rounded-full tw-w-[46px] tw-h-[46px] tw-bg-primary-btn tw-justify-center tw-items-center hover:lg:tw-scale-110 tw-transition tw-duration-100" data-direction="prev"><svg class="tw-text-primary-btn-color" width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M6.62.73a.7.7 0 0 0-.904-.074L5.63.73.68 5.68a.697.697 0 0 0-.197.388l-.008.107c0 .143.044.287.131.408l.074.087 4.95 4.95a.7.7 0 0 0 1.063-.904l-.073-.086-4.454-4.454L6.62 1.72a.7.7 0 0 0 0-.99z" fill="currentColor"></path></svg></span>
+        <span class="instagram-pagination  tw-absolute tw-cursor-pointer tw-top-1/2 tw-right-2 tw-transform tw--translate-y-1/2 tw-z-10 tw-rounded-full tw-w-[46px] tw-h-[46px] tw-bg-primary-btn tw-justify-center tw-items-center hover:lg:tw-scale-110 tw-transition tw-duration-100" data-direction="next"><svg class="tw-text-primary-btn-color" width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1.505.606a.7.7 0 0 1 .903-.074l.087.074 4.95 4.95c.11.109.175.245.197.387l.008.107a.698.698 0 0 1-.131.408l-.074.087-4.95 4.95a.7.7 0 0 1-1.064-.903l.074-.087 4.454-4.454-4.454-4.456a.7.7 0 0 1 0-.99z" fill="currentColor"></path></svg></span>
+      </div>
+      {% endif %}
+      <ul class="instagram_list tw-relative hide-scrollbar tw-list-none tw-flex tw-overflow-x-auto tw-m-0 tw-p-0 tw--mx-2 lg:tw--mx-2.5">
+          {% for block in section.blocks %}
+          <li class="instagram_item tw-flex tw-flex-col tw-flex-shrink-0 tw-w-full lg:tw-w-1/4 tw-px-2 lg:tw-px-2.5" onclick="javascript:(location.href='{{ block.settings.ins_url }}');" style="cursor: pointer;">
+            <section class="tw-bg-body tw-flex tw-justify-between tw-items-center tw-min-h-[61px] tw-p-3 tw-border-solid tw-border tw-border-b-0 tw-border-line tw-rounded-t-global">
+              <div class="tw-flex-shrink-0 tw-w-9 tw-h-9 tw-mr-3 tw-p-0.5 tw-overflow-hidden tw-rounded-full tw-bg-gradient-to-t tw-from-[rgb(248,149,72)] tw-to-[rgb(204,47,133)]">
+                <div class="tw-w-full tw-h-full tw-p-0.5 tw-rounded-full tw-bg-white">
+                    {%- assign img_url_head = block.settings.image_head | img_url: 'original', crop: 'center' -%}
+                    <img class="tw-block tw-rounded-full tw-w-full tw-h-full tw-object-cover lazyautosizes lazyloaded" src="{{ img_url_head }}" data-sizes="auto" alt=""  sizes="28px">
+                  
+                </div>
+              </div>       
+                <div class="tw-flex tw-flex-col tw-justify-center tw-flex-grow">
+                  <p class="tw-m-0 tw-leading-none tw-font-bold tw-mb-0.5 last:tw-mb-0">{{ block.settings.ins_name }}</p>
+                  <p class="tw-m-0 tw-leading-none tw-opacity-65 tw-body-minus-2">{{ block.settings.ins_time }}</p>
+                </div>
+              <a class=" tw-pt-1.5 tw-ml-3" href="{{ block.settings.ins_url }}">
+                <img src="https://cdn.shopifycdn.net/s/files/1/0555/6351/8026/files/ins.svg?v=1648516063">
+              </a>
+            </section>
+            <section class="tw-relative tw-pb-[100%] tw-border-solid tw-border tw-border-t-0 tw-border-b-0 tw-border-line">
+                {%- assign img_url_main = block.settings.image_main | img_url: 'original', crop: 'center' -%}
+                <img class="tw-absolute tw-w-full tw-h-full tw-object-cover lazyautosizes lazyloaded" src="{{ img_url_main }}" data-sizes="auto" alt=""  sizes="323px">
+            </section>
+              <section class="tw-bg-body tw-flex-grow tw-p-3 tw-pb-6 md:tw-pt-[14px] tw-border-solid tw-border tw-border-t-0 tw-border-line tw-rounded-b-global">
+                
+                  <div class="tw-flex tw-items-center tw-mb-3 last:tw-mb-0 tw-leading-none tw-text-[14px]">
+                    <img style="margin-left: unset !important;margin-right: unset !important;" src="https://cdn.shopifycdn.net/s/files/1/0555/6351/8026/files/love.svg?v=1648516791">  
+                    <span class="instagram_likes" style="margin-left:{{ block.settings.love_left }}">{{ block.settings.love }}</span>
+                  </div>
+                  <div class="instagram_text tw-leading-1.3 tw-overflow-hidden tw-overflow-ellipsis">{{ block.settings.des }}</div>
+              </section>
+            
+          </li>
+          {% endfor %}
+      </ul>
+    </div>
+</div>
+<style>
+.type-title-font-family{font-family:Open Sans,sans-serif;font-style:normal;font-weight:500;}h4{font-family:Open Sans;}*:focus{outline:none;}.hide-scrollbar::-webkit-scrollbar,.hide-scrollbar::-webkit-scrollbar{display:none;}.hide-scrollbar{-ms-overflow-style:none;scrollbar-width:none;}*,:after,:before{box-sizing:border-box;}*,::after,::before{--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-transform:translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity));--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur:var(--tw-empty,);--tw-brightness:var(--tw-empty,);--tw-contrast:var(--tw-empty,);--tw-grayscale:var(--tw-empty,);--tw-hue-rotate:var(--tw-empty,);--tw-invert:var(--tw-empty,);--tw-saturate:var(--tw-empty,);--tw-sepia:var(--tw-empty,);--tw-drop-shadow:var(--tw-empty,);--tw-filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);}.tw-absolute{position:absolute;}.tw-relative{position:relative;}.tw-top-1\/2{top:50%;}.tw-left-2{left:.5rem;}.tw-right-2{right:.5rem;}.tw-z-10{z-index:10;}.tw-m-0{margin:0;}.tw--mx-2{margin-left:-.5rem;margin-right:-.5rem;}.tw-mr-3{margin-right:.75rem;}.tw-mb-6{margin-bottom:1.5rem;}.tw-ml-3{margin-left:.75rem;}.tw-mb-3{margin-bottom:.75rem;}.tw-mb-0\.5{margin-bottom:.125rem;}.tw-mr-1\.5{margin-right:.375rem;}.tw-block{display:block;}.tw-flex{display:flex;}.tw-h-\[46px\]{height:46px;}.tw-h-full{height:100%;}.tw-h-9{height:2.25rem;}.tw-min-h-\[61px\]{min-height:61px;}.tw-w-full{width:100%;}.tw-w-\[46px\]{width:46px;}.tw-w-9{width:2.25rem;}.tw-flex-shrink-0{flex-shrink:0;}.tw-flex-grow{flex-grow:1;}.tw--translate-y-1\/2{--tw-translate-y:-50%;transform:var(--tw-transform);}.tw-transform{transform:var(--tw-transform);}.tw-cursor-pointer{cursor:pointer;}.tw-list-none{list-style-type:none;}.tw-flex-col{flex-direction:column;}.tw-items-center{align-items:center;}.tw-justify-center{justify-content:center;}.tw-justify-between{justify-content:space-between;}.tw-overflow-hidden{overflow:hidden;}.tw-overflow-x-auto{overflow-x:auto;}.tw-overflow-ellipsis{text-overflow:ellipsis;}.tw-rounded-full{border-radius:9999px;}.tw-rounded-t-global{border-top-left-radius:var(--global-border-radius);border-top-right-radius:var(--global-border-radius);}.tw-rounded-b-global{border-bottom-right-radius:var(--global-border-radius);border-bottom-left-radius:var(--global-border-radius);}.tw-border{border-width:1px;}.tw-border-b-0{border-bottom-width:0;}.tw-border-t-0{border-top-width:0;}.tw-border-solid{border-style:solid;}.tw-border-line{border-color:var(--color-borders);}.tw-bg-body{background-color:var(--color-body-bg);}.tw-bg-white{--tw-bg-opacity:1;background-color:rgba(255,255,255,var(--tw-bg-opacity));}.tw-bg-primary-btn{background-color:var(--color-primary-btn-bg);}.tw-bg-gradient-to-t{background-image:linear-gradient(to top,var(--tw-gradient-stops));}.tw-from-\[rgb\(248\,149\,72\)\]{--tw-gradient-from:rgb(248,149,72);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to,rgba(248,149,72,0));}.tw-to-\[rgb\(204\,47\,133\)\]{--tw-gradient-to:rgb(204,47,133);}.tw-object-cover{-o-object-fit:cover;object-fit:cover;}.tw-p-0{padding:0;}.tw-p-3{padding:.75rem;}.tw-p-0\.5{padding:.125rem;}.tw-px-2{padding-left:.5rem;padding-right:.5rem;}.tw-pt-1\.5{padding-top:.375rem;}.tw-pb-\[100\%\]{padding-bottom:100%;}.tw-pb-6{padding-bottom:1.5rem;}.tw-text-\[14px\]{font-size:14px;}.tw-font-bold{font-weight:700;}.tw-leading-1\.3{line-height:1.3;}.tw-leading-none{line-height:1;}.tw-text-body-color{color:var(--color-body-text);}.tw-text-primary-btn-color{color:var(--color-primary-btn-text);}.tw-opacity-65{opacity:.65;}.tw-transition{transition-property:background-color,border-color,color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:background-color,border-color,color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:background-color,border-color,color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:150ms;}.tw-duration-100{transition-duration:.1s;}.tw-container{margin-left:auto;margin-right:auto;max-width:var(--layout-width);padding-left:1rem;padding-right:1rem;}@media (min-width:960px){.tw-container{padding-left:2.5rem;padding-right:2.5rem;}}.tw-body-minus-2{font-size:calc(var(--type-body-font-size) - 2px);}.tw-title-sm{line-height:var(--type-title-line-height);letter-spacing:var(--type-title-spacing);text-transform:var(--type-title-capitalize);}.tw-title-sm{font-size:calc(var(--type-title-font-size) * .63);}@media (min-width:960px){.tw-title-sm{font-size:calc(var(--type-title-font-size) * .85);}}@media (max-width:959.98px){.md\:tw-pt-\[14px\]{padding-top:14px;}}@media (min-width:960px){.lg\:tw--mx-2\.5{margin-left:-.625rem;margin-right:-.625rem;}.lg\:tw-mb-10{margin-bottom:2.5rem;}.lg\:tw-w-1\/4{width:25%;}.lg\:tw-px-2\.5{padding-left:.625rem;padding-right:.625rem;}.hover\:lg\:tw-scale-110:hover{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:var(--tw-transform);}}*,::before,::after{--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-transform:translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));--tw-border-opacity:1;border-color:rgba(228,228,231,var(--tw-border-opacity));--tw-shadow:0 0 #0000;--tw-ring-inset:var(--tw-empty,);--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-blur:var(--tw-empty,);--tw-brightness:var(--tw-empty,);--tw-contrast:var(--tw-empty,);--tw-grayscale:var(--tw-empty,);--tw-hue-rotate:var(--tw-empty,);--tw-invert:var(--tw-empty,);--tw-saturate:var(--tw-empty,);--tw-sepia:var(--tw-empty,);--tw-drop-shadow:var(--tw-empty,);--tw-filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);--tw-backdrop-blur:var(--tw-empty,);--tw-backdrop-brightness:var(--tw-empty,);--tw-backdrop-contrast:var(--tw-empty,);--tw-backdrop-grayscale:var(--tw-empty,);--tw-backdrop-hue-rotate:var(--tw-empty,);--tw-backdrop-invert:var(--tw-empty,);--tw-backdrop-opacity:var(--tw-empty,);--tw-backdrop-saturate:var(--tw-empty,);--tw-backdrop-sepia:var(--tw-empty,);--tw-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);}h4.instagram_title{text-align:center;}.instagram-{{ section.id }} .instagram_text{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;}
+span.instagram-pagination{background:transparent;}
+span.instagram-pagination{top:42%;}
+span.instagram-pagination[data-direction="prev"]{left:0;}
+span.instagram-pagination[data-direction="next"]{right:-35px;}
+  @media (min-width:959.98px){
+  	.instagram-{{ section.id }}{
+      max-width: {{ section.settings.pc_width }}vw;
+    }
+  } 
+</style>
+<script>
+  window.addEventListener('load', function() {
+    $('.instagram_list').slick({
+      infinite: {{ section.settings.cycle }},
+      speed: {{ section.settings.speed }},
+      autoplay:{{ section.settings.autoplay }},
+      slidesToShow:{{ section.settings.slidesToShowPC }},
+      slidesToScroll:{{ section.settings.slidesToScrollPC }},
+      prevArrow:$("span.instagram-pagination")[0],
+      nextArrow:$("span.instagram-pagination")[1],
+      responsive:[
+        {
+          breakpoint: 800,
+          settings: {
+            slidesToShow: {{ section.settings.slidesToShowMobile }},
+            slidesToScroll: {{ section.settings.slidesToScrollMobile }}
+          }
+        },
+        {
+          breakpoint: 10,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    });
+  });
+</script>
+{% schema %}
+    {
+        "name": "INS",
+        "class": "home-custom-block-hot-sections",
+        "max_blocks": 9,
+        "settings": [
+             {
+                "type": "text",
+                "id": "pc_width",
+                "label": "PC端屏幕占比",
+                "default": "68",
+                "info":"百分之x屏幕宽度"
+            },
+            {
+                "type": "text",
+                "id": "widget_title",
+                "label": "INS大标题",
+                "default": "Follow @shelivo_shop"
+            },
+            {
+                "type": "text",
+                 "id": "widget_title_fontsize",
+                 "label": "字体大小",
+                 "default": "24px"
+            },
+            {
+              "type" : "color",
+              "id" : "color_title",
+              "label" : "Title Color",
+              "default" : "#2d2d2d"
+            },
+            {
+              "type" : "text",
+              "id" : "title_margin",
+              "label" : "上边距",
+              "default" : "25px"
+            },
+            {
+              "type" : "text",
+              "id" : "slidesToShowPC",
+              "label" : "PC端显示几个",
+              "default" : "4"
+            },
+            {
+              "type" : "text",
+              "id" : "slidesToScrollPC",
+              "label" : "PC端每次滑动几个",
+              "default" : "4"
+            },
+			{
+              "type" : "text",
+              "id" : "slidesToShowMobile",
+              "label" : "手机端显示几个",
+              "default" : "1"
+            },
+            {
+              "type" : "text",
+              "id" : "slidesToScrollMobile",
+              "label" : "手机端每次滑动几个",
+              "default" : "1"
+            },
+            {
+              "type" : "checkbox",
+              "id" : "arrow",
+              "label" : "左右箭头显示",
+              "default" : true
+            },
+            {
+              "type" : "text",
+              "id" : "arrow_top",
+              "label" : "箭头MarginTop",
+              "info":"px"
+            },
+            {
+              "type" : "text",
+              "id" : "speed",
+              "label" : "速度",
+              "default":"300"
+            },
+            {
+              "type" : "checkbox",
+              "id" : "cycle",
+              "label" : "是否循环",
+              "default" : true
+            },
+            {
+              "type" : "checkbox",
+              "id" : "centerMode",
+              "label" : "centerMode",
+              "default" : false
+            },
+            {
+              "type" : "checkbox",
+              "id" : "autoplay",
+              "label" : "自动轮播",
+              "default" : true
+            }
+             
+                   	
+        ],
+        "blocks": [
+            {
+                "type": "INS_item",
+                "name": "INS_item",
+                "settings": [		  	
+                {
+                    "type": "image_picker",
+                    "id": "image_head",
+                    "label": "用户头像"
+                },
+                {
+                    "type": "text",
+                    "id": "ins_name",
+                    "label": "用户名",
+                    "default": "Name"
+                },
+                {
+                    "type": "text",
+                    "id": "ins_time",
+                    "label": "时间",
+                    "default" : "1 days ago"
+                },
+                {
+                    "type" : "text",
+                    "id" : "ins_url",
+                    "label" : "链接"
+                },
+                {
+                    "type" : "text",
+                    "id" : "love",
+                    "label" : "点赞数",
+                    "default" : "150"
+                },
+                {
+                    "type" : "text",
+                    "id" : "love_left",
+                    "label" : "点赞数字左边距",
+                    "default" : "10px"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_main",
+                    "label": "主图"
+                },
+                {
+                    "type" : "richtext",
+                    "id" : "des",
+                    "label" : "描述"
+                }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "INS",
+                "category": "Custom layout",
+                "blocks": [
+                    {
+                        "type": "INS_item"
+                    },
+                    {
+                        "type": "INS_item"
+                    },
+                    {
+                        "type": "INS_item"
+                    },
+                    {
+                        "type": "INS_item"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

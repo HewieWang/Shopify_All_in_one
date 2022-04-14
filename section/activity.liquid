@@ -1,0 +1,155 @@
+{% if section.settings.display_activity %}
+<style>
+  #content {padding-top: initial;}
+  .activity_txt{text-align:{{ section.settings.activity_txt_align }};line-height:{{ section.settings.activity_height }}};
+  .activity_box{height:{{ section.settings.activity_height }};background:{{ section.settings.activity_backgroundcolor }}};
+  .activity_txt p{font-size:{{ section.settings.activity_fontsize }};color:{{ section.settings.activity_fontcolor }}}
+  @media only screen and (max-width: 768px){
+    .activity_txt:nth-child(1){display:none;}.activity_txt:nth-child(3){display:none;}
+    .mobile-banner-space {margin-top: unset !important;}
+  }
+  {% if section.settings.display_border %}
+    @media only screen and (min-width: 768px){
+      .activity_box{
+        border-top: 1px solid {{ section.settings.activity_bordercolor }};border-bottom: 1px solid {{ section.settings.activity_bordercolor }};
+      }
+      .activity_txt:nth-child(1){border-right: 1px solid rgb(216, 216, 216); }
+      .activity_txt:nth-child(3){border-left: 1px solid rgb(216, 216, 216); }
+    }
+  {% endif %}
+  .activity_logo{display:inline-block;margin-right:{{ section.settings.activity_txt2logo }}}.activity_txt p{display:inline-block;}
+  .activity_box_item{height:{{ section.settings.activity_box_height }};padding-top: {{ section.settings.activity_box_paddingTop }};
+    padding-bottom: {{ section.settings.activity_box_paddingBottom }};};
+</style>
+<div class="container-fluid activity_box">
+  <div class="row">
+    <div class="activity_box_item">
+        <div class="col-md-4 activity_txt">{% if section.settings.activity1_logo  %}<img class="activity_logo" src="{{ section.settings.activity1_logo | img_url }}">{% endif %}{{ section.settings.activity1 }}</div>
+        <div class="col-md-4 activity_txt">{% if section.settings.activity2_logo  %}<img class="activity_logo" src="{{ section.settings.activity2_logo | img_url }}">{% endif %}{{ section.settings.activity2 }}</div>
+        <div class="col-md-4 activity_txt">{% if section.settings.activity3_logo  %}<img class="activity_logo" src="{{ section.settings.activity3_logo | img_url }}">{% endif %}{{ section.settings.activity3 }}</div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Activity",
+    "settings": [
+		{
+          "type": "header",
+          "content": "Activity"
+        },
+		{
+            "type": "checkbox",
+            "id": "display_activity",
+            "label": "是否显示Activity",
+			"default": true
+        },
+        {
+            "type": "richtext",
+            "id": "activity1",
+            "label": "Activity1内容"
+        },
+		{
+            "type": "richtext",
+            "id": "activity2",
+            "label": "Activity2内容"
+        },
+		{
+            "type": "richtext",
+            "id": "activity3",
+            "label": "Activity3内容"
+        },
+		{
+            "type": "image_picker",
+            "id": "activity1_logo",
+            "label": "小图标1"
+        },
+		{
+            "type": "image_picker",
+            "id": "activity2_logo",
+            "label": "小图标2"
+        },
+		{
+            "type": "image_picker",
+            "id": "activity3_logo",
+            "label": "小图标3"
+        },
+		{
+            "type": "text",
+            "id": "activity_txt2logo",
+            "label": "小图标和文字间距",
+			"default":"10px"
+        },
+		{
+            "type": "text",
+            "id": "activity_txt_align",
+            "label": "文字位置",
+			"default":"center"
+        },
+        {
+            "type": "text",
+            "id": "activity_height",
+            "label": "文字高度",
+			"default":"30px"
+        },
+		{
+            "type": "text",
+            "id": "activity_box_height",
+            "label": "文字盒子高度",
+			"default":"70px"
+        },
+		{
+            "type": "text",
+            "id": "activity_box_paddingTop",
+            "label": "Text padding_top",
+			"default":"10px"
+        },
+		{
+            "type": "text",
+            "id": "activity_box_paddingBottom",
+            "label": "Text padding_Bottom",
+			"default":"10px"
+        },
+        {
+            "type": "text",
+            "id": "activity_fontsize",
+            "label": "字体大小"
+        },
+         {
+            "type": "color",
+            "id": "activity_fontcolor",
+            "label": "字体颜色"
+        },
+		{
+            "type": "color",
+            "id": "activity_backgroundcolor",
+            "label": "背景颜色"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_border",
+            "label": "是否显示变框PC",
+			"default": false
+        },
+		{
+            "type": "color",
+            "id": "activity_bordercolor",
+            "label": "变框颜色"
+        }
+		
+	],
+    "presets": [
+        {
+          "name": "Activity"
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
